@@ -68,6 +68,9 @@ def agent(request):
     return render(request, "agent.html", {})
     
 
+def about(request):
+    return render(request, "about.html", {})
+
 def search(request):
 
     queryset_list = Listing.objects.order_by('-list_date')

@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+
+<!-- Banner Section Start -->
+<section class="inner-page-breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="breadcrumb-content position-relative">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-white">Home</a></li>
+                        <li class="breadcrumb-item active text-white" aria-current="page">About Us</li>
+                    </ul>
+                    <h1 class="breadcrumb-title text-white">About  Us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section End -->
+
+<div class="about-us-content-wrapper">
+
+<section class="about-us-section spacer">
+    <div class="container">
+        <h2 class="text-center">Our Mission</h2>
+        <!-- <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        <div class="row mt-5">
+            <div class="col-lg-6">
+                <img class="img-fluid w-100 h-100" src="{% static 'assets/images/property-img/property-img-1.jpg' %}" alt="about-image">
+            </div>
+            <div class="col-lg-6">
+                <p class="text-alter font-averta-bold mt-4 mt-lg-0">At Royal Haven's Home, our mission is to provide exceptional real estate services to our clients, guided by our values of integrity, professionalism, and client satisfaction.</p>
+
+                <!-- <p>At Royal Haven's Home, our mission is to provide exceptional real estate services to our clients, guided by our values of integrity, professionalism, and client satisfaction.</p> -->
+
+                <!-- <p class="mb-0">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here</p> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section Start -->
+
+<section class="home-why-us-section spacer">
+    <div class="container">
+        <h2 class="text-center">Why Choose Us?</h2>
+        <!-- <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        <div class="row mt-5 justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="card why-choose-us-meta mb-4 mb-lg-0">
+                    <div class="card-body">
+                        <div class="icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="why-choose-us-details text-center mt-4">
+                            <h4 class="font-18">Trusted By Thousands</h4>
+                            <!-- <p class="mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have Ipsum available.</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card why-choose-us-meta mb-4 mb-lg-0">
+                    <div class="card-body">
+                        <div class="icon">
+                            <i class="fas fa-house-user"></i>
+                        </div>
+                        <div class="why-choose-us-details text-center mt-4">
+                            <h4 class="font-18">Wide Renge Of Properties</h4>
+                            <!-- <p class="mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have Ipsum available.</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card why-choose-us-meta">
+                    <div class="card-body">
+                        <div class="icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <div class="why-choose-us-details text-center mt-4">
+                            <h4 class="font-18">Financing Made Easy</h4>
+                            <!-- <p class="mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have Ipsum available.</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Our Agents Section Start -->
+
+<!-- Our Partners Section End -->
+<br>
+<!-- CTA Section Start -->
+<section class="home-cta-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="call-to-action-meta">
+                    <div class="cta-info">
+                        <h1 class="text-white">Looking for a dream home or land?</h1>
+                        <p class="text-white mb-0">We can help you realize your dream simultaneously</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cta-btn text-md-end mt-4 mt-md-0">
+                    <a href="{% url 'listings' %}" class="btn btn-warning">Explore Properties</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -120,7 +120,7 @@
                             </div>
                             <div class="card-body d-flex flex-column">
                                 <p class="text-orange mb-0">{% if listing.property_type %}{{listing.property_type}}{% endif %}</p>
-                                <h4 class="font-20 product-title"><a href="#" class="text-decoration-none">{% if listing.title %}{{listing.title|title}}{% endif %}</a></h4>
+                                <h4 class="font-20 product-title"><a href="{% url 'listing' listing.id %}" class="text-decoration-none">{% if listing.title %}{{listing.title|title}}{% endif %}</a></h4>
                                 <p><i class="fas fa-map-marker-alt"></i>{% if listing.address %}{{listing.address}}{% endif %}</p>
                                 <ul class="list-unstyled d-flex justify-content-between mb-0 mt-auto">
                                     {% if listing.bedrooms %}

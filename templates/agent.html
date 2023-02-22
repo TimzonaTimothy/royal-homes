@@ -3,6 +3,87 @@
 {% load static %}
 {% block content %}
 
+<div class="property-agent-details">
+    <div class="blog-single-breadcrumb mb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="breadcrumb-content">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Simple Listing – List View</li>
+                        </ul>
+                        <h1 class="breadcrumb-title font-30 mt-3">Johnathan Doe</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="property-agent-detail-section pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="property-agent-detail-meta">
+                        <div class="card property-agent-img-card border-0 mb-4">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-lg-5">
+                                    <div class="position-relative agent-desc h-100">
+                                        <img src="{% static 'assets/images/team/11.jpg' %}" alt="agent-image" class="img-fluid w-100 h-100 agent-list-img" />
+                                        <div class="property-tag">
+                                            <ul class="list-unstyled mb-0">
+                                                <!-- <li class="bg-orange">2 Listings</li> -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="card-body ps-4">
+                                        <div class="product-title-meta">
+                                            <h4 class="product-title mb-0"><a href="#" class="text-decoration-none">Johnathan Doe</a></h4>
+                                            <p class="text-orange font-14 mb-2">Estate Agent</p>
+                                        </div>
+                                        <p class="mb-2 text-alter"><i class="fas fa-phone-alt me-3 text-orange"></i>9876543210</p>
+                                        <p class="mb-0 border-bottom pb-3"><i class="far fa-envelope me-3 text-orange"></i><a href="#" class="text-decoration-none">johnathandoe@gmail.com</a></p>
+                                        
+                                        <div class="d-flex align-items-center mt-3">
+                                            <ul class="social-icons list-inline mb-0">
+                                                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                                                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                                <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                                                <li class="list-inline-item"><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                                            </ul>
+                                            <a href="{% url 'listings' %}" class="text-decoration-none text-orange ms-auto">View Listing <i class="fas fa-chevron-right font-14"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="agent-details-tabs card">
+                            <div class="card-body">
+                                <nav>
+                                    <div class="nav nav-tabs agent-tabs" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="ag-desc-tab" data-bs-toggle="tab" data-bs-target="#ag-desc" type="button" role="tab" aria-controls="ag-desc" aria-selected="true">Description</button>
+                                    
+                                    </div>
+                                </nav>
+                                <div class="tab-content mt-4" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="ag-desc" role="tabpanel" aria-labelledby="ag-desc-tab">
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+                                        <p> It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
