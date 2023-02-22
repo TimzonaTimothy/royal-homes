@@ -1,5 +1,5 @@
 /env
-staticfiles/on
+staticfiles/
 *.log
 *.pot
 *.pyc
