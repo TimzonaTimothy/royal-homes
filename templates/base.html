@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon.png' %}">
+	<title>Royal Homes - Real Estate HTML Template</title>
+
+    <!-- Fonts  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+	<!-- Style CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <header class="topbar">
+            <div class="container">
+                <div class="header">
+                    <nav class="navbar navbar-expand-lg navbar-dark top-navbar">
+                        <a class="navbar-brand" href="{% url 'index' %}">
+						    <img src="{% static 'assets/images/logo1.png' %}" class="logo logo-white" alt="logo">
+                            <img src="{% static 'assets/images/logo-dark.png' %}" class="logo logo-dark" alt="logo">
+						</a>
+                        
+                        <button class="navbar-toggler ms-auto " type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapsible-menu" aria-controls="collapsible-menu" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="hamburger">
+                                <span class="hamburger-top"></span>
+                                <span class="hamburger-bottom"></span>
+                            </span>
+                        </button>
+                        <a href="#" class="text-white d-lg-none d-block">
+                        <!-- <i class="fas fa-user-circle font-22 mt-1"></i></a> -->
+                        <div class="collapse navbar-collapse" id="collapsible-menu">
+                            <ul class="navbar-nav ms-auto primary-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'listings' %}">Listings</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'listings' %}">Gallery</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'listings' %}">Agent</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                                </li>
+                            </ul>
+                            <!-- <a href="https://code-wrapper.com/royal-homes/page-login.html" class="btn btn-warning py-2 px-4 d-lg-block d-none">LOGIN</a> -->
+                        </div>
+                    </nav>
+                </div>               
+            </div>
+        </header>
+
+        {% block content %} {% endblock %}
+        
+        <!-- Footer -->
+        <footer id="footer" class="footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="footer-about">
+                            <h3 class="font-18 text-white">About Us</h3>
+                            <p class="mt-4 pt-2 pe-4">Dedicated To Providing First Class & Premium Real Estate Property Mnagement & Professional Consultancy Within And Beyound Nigeria</p>
+                            <!-- <a href="#" class="text-body text-decoration-none">Read More <i class="fas fa-chevron-right ms-2"></i></a> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mt-4 mt-md-0">
+                        <h3 class="font-18 text-white">Contact Us</h3>
+                        <p class="mt-4 pt-2 pe-5 d-flex mb-3"><i class="fas fa-map-marker-alt mt-1 font-22 me-3"></i>Freedom Plaza, Amaku Road, Off Aroma Junction Awka.</p>
+                        <p class="pe-5 d-flex mb-3"><i class="fab fa-phone-alt mt-1 font-22 me-3"></i>08164441825</p>
+                        <p class="pe-5 d-flex mb-3"><i class="fas fa-phone-alt mt-1 font-22 me-3"></i>08066065703</p>
+                        <p class="pe-5 d-flex mb-3"><i class="fas fa-envelope mt-1 font-22 me-3"></i>royalhavenhomes1@gmail.com</p>
+                    </div>
+                    <div class="col-md-12 col-lg-4 mt-4 mt-lg-0">
+                        <h3 class="font-18 text-white">Follow Us</h3>
+                        
+                        <ul class="list-unstyled list-inline footer-social-link mt-4 pt-3">
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/Royahavenhomes?mibextid=LQQJ4d"><i class="fab fa-facebook-f font-22"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.instagram.com/invites/contact/?i=ze6yxwl6lcaw&utm_content=89vzvd4"><i class="fab fa-instagram font-22"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.tiktok.com/@royalhavenhomes?_t=8a4LgQdr91R&_r=1"><i class="fab fa-tiktok font-22"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://wa.me/message/MTIJ334KZNAWA1"><i class="fab fa-whatsapp font-22"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom row">
+                    <div class="col-md-4 col-lg-6">
+                        <p>© <span class="year"></span>. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-8 col-lg-6 text-md-end">
+                        <ul class="list-inline footer-link">
+                            <li class="list-inline-item">
+                                <a href="" class="text-decoration-none">Contact Us</a>
+                            </li>
+                            <!-- <li class="list-inline-item">
+                                <a href="#" class="text-decoration-none">FAQ</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-decoration-none">Privacy</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-decoration-none">Terms & Conditions</a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const date = new Date();
+document.querySelector('.year').innerHTML = date.getFullYear();
+
+    </script>
+    <!-- Required JS -->
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/libs/fontawesome/js/all.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+</html>

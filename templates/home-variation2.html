@@ -1,0 +1,307 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+
+        <!-- Banner Section Start -->
+        <section id="v1-banner" class="v1-banner">
+            <div class="owl-carousel owl-theme v1-banner-carousel owl-loaded owl-drag">
+                <div class="v1-banner-item" style="background-image: url('{% static "assets/images/banner-2.jpg" %}');">  
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                <div class="banner-content">
+                                    <h1 class="text-white banner-title font-55 text-center">Welcome to <span class="text-orange">Royal Haven Home's.</span></h1>
+                                    <p class="banner-desc text-white font-22 text-center">We are dedicated to helping you achieve your real estate goals</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="v1-banner-item" style="background-image: url('{% static "assets/images/banner-3.jpg" %}');">  
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                <div class="banner-content">
+                                    <h1 class="text-white banner-title font-55 text-center">Welcome to <span class="text-orange">Royal Haven Home's</span></h1>
+                                    <p class="banner-desc text-white font-22 text-center">We are dedicated to helping you achieve your real estate goals</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Banner Section End -->
+
+        <!-- Search Section Start -->
+
+        <section id="v1-search-property" class="v1-search-property">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <form action="{% url 'search' %}" class="banner-serach-form">
+                            
+                            <div class="tab-content banner-serach-form-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-buy" role="tabpanel" aria-labelledby="pills-buy-tab">
+                                    <div class="row"> 
+                                        <div class="col-lg-4 col-sm-12">
+                                            <input type="text" class="form-control mb-3 mb-lg-0" name="keywords" placeholder="Enter Keywords..." value="">
+                                        </div>
+                                        <div class="col-lg-4 col-sm-12">
+                                            <select class="form-select form-select-md mb-3 mb-lg-0" aria-label=".form-select-md example" name="property" required>
+                                                <option selected="true" disabled="disabled">Property Type</option>
+                                                {% for key,value in property_choices.items %}
+                                                <option value="{{ key }}">{{ value }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <!-- <div class="col-lg-2 col-sm-6">
+                                            <select class="form-select form-select-md mb-3 mb-lg-0" aria-label=".form-select-md example" name="property-location">
+                                                <option selected>Location</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div> -->
+                                       
+                                        <div class="col-lg-2 col-sm-12">
+                                            <input type="submit" class="btn btn-warning property-search w-100 mb-3 mb-md-0" value="Search">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>                
+            </div>
+        </section>
+
+        <!-- Search Section End -->
+
+        <!-- Featured Property Section Start -->
+
+        <section class="home-featured-property spacer">
+            <div class="container">
+                <div class="section-header d-md-flex align-items-center mb-5">
+                    <div class="section-header-detail">
+                        <h2>Featured Properties</h2>
+                        <p>Explore some of our featured listings</p>
+                    </div>
+                    <a href="{% url 'listings' %}" class="text-decoration-none font-averta-bold ms-auto ">View All Property <i class="fas fa-chevron-right"></i></a>
+                </div>
+
+                <div class="row justify-content-center d-flex">
+                    {% if listings %}
+                    {% for listing in listings %}
+                    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 d-flex">
+                        <div class="card v1-featured-property-card">
+                            <div class="featured-product-img position-relative"> 
+                                <a href="{% url 'listing' listing.id %}">
+                                <img src="{% if listing.photo_main %}{{ listing.photo_main.url }}{% endif %}" alt="featured-property" class="img-fluid w-100 fe-pro-img" />
+                            </a>
+                                
+                                <div class="property-details mb-2">
+                                    <h4 class="text-white mb-0">{% if listing.price %}₦{{ listing.price | intcomma }}{% endif %}</h4>
+                                    <div class="property-view ms-auto">
+                                        <!-- <a href="#"><i class="fas fa-exchange-alt"></i></a>
+                                        <a href="#"><i class="far fa-heart"></i></a> -->
+                                    </div>
+                                </div>
+                                <div class="property-tag">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="{% if listing.status == 'Rent' %}bg-blue{% elif listing.status == 'Sale' %}bg-green{% elif listing.status == 'Sold' %}bg-orange{% endif %}">{% if listing.status %}{{listing.status}}{% endif %}</li>
+                                    </ul>
+                                </div>
+                                <span class="featured-property me-2 text-white bg-green"><i class="fas fa-star font-12"></i></span>
+                                <span class="hot-property me-2 text-white bg-orange"><i class="fas fa-fire font-12"></i></span>
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <p class="text-orange mb-0">{% if listing.property_type %}{{listing.property_type}}{% endif %}</p>
+                                <h4 class="font-20 product-title"><a href="#" class="text-decoration-none">{% if listing.title %}{{listing.title|title}}{% endif %}</a></h4>
+                                <p><i class="fas fa-map-marker-alt"></i>{% if listing.address %}{{listing.address}}{% endif %}</p>
+                                <ul class="list-unstyled d-flex justify-content-between mb-0 mt-auto">
+                                    {% if listing.bedrooms %}
+                                    <li><p class="mb-0">{{ listing.bedrooms }} <i class="fas fa-bed"></i></p>
+                                    Bedrooms
+                                    {% endif %}
+                                    <!-- <li><p class="mb-0">2 <i class="fas fa-sink"></i></p>
+                                    Bathrooms -->
+                                    {% if listing.sqft %}
+                                    <li><p class="mb-0">{{ listing.sqft }} <i class="fas fa-vector-square"></i>   </p>
+                                        square Ft
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <!-- <div class="property-footer border-top">
+                                <div class="card-body">
+                                    <div class="property-footer-meta d-flex align-items-center">
+                                        <a href="#"><img src="{% static 'assets/images/user-icon.png' %}" alt="user-image" class="img-fluid"></a>
+                                        <div class="ms-3">
+                                            <h6 class="mb-0"><a href="#" class="text-decoration-none">Johnathan Doe</a></h6>
+                                            <p class="font-14 mb-0">Estate Agents</p>
+                                        </div>
+                                        <div class="property-year ms-auto">
+                                            <p class="mb-0">1 day Ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+          <div class="col-md-12">
+            <p>No Listing Availabe</p>
+          </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Property Section End -->
+
+        <!-- Properties By Locations Section Start-->
+
+        <section class="property-by-location-st2 spacer">
+            <div class="container">
+                <div class="section-header d-md-flex align-items-center mb-5">
+                    <div class="section-header-detail">
+                        <h2>Check Out Our Gallery</h2>
+                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+                    </div>
+                    <a href="javascript:void(0)" class="text-decoration-none font-averta-bold ms-auto ">View All Gallery <i class="fas fa-chevron-right"></i></a>
+                </div>
+
+                <div class="row justify-content-center mt-5">
+                    <div class="col-md-4">
+                        <div class="location-image position-relative mb-4">
+                            <img src="{% static 'assets/images/city-1.jpg' %}" alt="location-image" class="img-fluid location-img w-100">   
+                            <!-- <h3 class="font-18 font-averta-regular location-name mb-0"><a href="#" class="text-decoration-none text-white">Miami</a></h3>
+                            <p class="text-white location-count mb-0">24 Properties</p> -->
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="location-image position-relative mb-4">
+                            <img src="{% static 'assets/images/city-2.jpg' %}" alt="location-image" class="img-fluid location-img w-100">   
+                            <!-- <a href="#" class="text-decoration-none"><h3 class="font-18 font-averta-regular text-white location-name mb-0">Miami</h3></a>
+                            <p class="text-white location-count mb-0">24 Properties</p> -->
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="location-image position-relative mb-4">
+                            <img src="{% static 'assets/images/city-2.jpg' %}" alt="location-image" class="img-fluid location-img w-100">   
+                            <!-- <a href="#" class="text-decoration-none"><h3 class="font-18 font-averta-regular text-white location-name mb-0">Miami</h3></a>
+                            <p class="text-white location-count mb-0">24 Properties</p> -->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="location-image position-relative mb-4">
+                            <img src="{% static 'assets/images/city-1.jpg' %}" alt="location-image" class="img-fluid location-img w-100">   
+                            <!-- <a href="#" class="text-decoration-none"><h3 class="font-18 font-averta-regular text-white location-name mb-0">Miami</h3></a>
+                            <p class="text-white location-count mb-0">24 Properties</p> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Properties By Locations Section End-->
+
+       
+
+        <!-- Become Agents Section Start -->
+
+        <section class="become-agent-section spacer">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2 class="text-white font-36">At Your Service</h2>
+                        <p class="font-20 mt-4">At Royal Haven Home's, we offer a wide range of services to meet your unique needs. kindly let us know about your need</p>
+                    </div>
+                    <div class="offset-lg-1 col-lg-5 mt-4 mt-lg-0">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <form class="become-agent-form">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <input type="text" name="f-name" class="form-control rounded-0" placeholder="First Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <input type="text" name="l-name" class="form-control rounded-0" placeholder="Last Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <input type="email" name="email" class="form-control rounded-0" placeholder="Email Address">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <input type="number" name="phone" class="form-control rounded-0" placeholder="Phone Number">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="mb-4">
+                                                <textarea class="form-control rounded-0" name="message" rows="4" cols="50" placeholder="Your Message"></textarea>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <div class="form-check form-check-inline">
+                                                    <input id="rent" class="form-check-input" type="checkbox" name="agent_option[]" value="Family Room">
+                                                    <label for="rent" class="ms-2 form-check-label">For Rent</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input id="sale" class="form-check-input" type="checkbox" name="agent_option[]" value="Family Room">
+                                                    <label for="sale" class="ms-2 form-check-label">For Sale</label>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-md-12">
+                                            <div class="mt-3">
+                                                <input type="submit" name="phone" class="btn btn-warning w-100 py-3" value="Send">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Become Agents Section End -->
+
+        <!-- CTA Section Start -->
+
+        <section class="home-cta-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <div class="call-to-action-meta">
+                            <div class="cta-info">
+                                <h1 class="text-white">Looking for a dream home or land?</h1>
+                                <p class="text-white mb-0">We can help you realize your dream simultaneously</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="cta-btn text-md-end mt-4 mt-md-0">
+                            <a href="{% url 'listings' %}" class="btn btn-warning">Explore Properties</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section End -->
+{% endblock %} 

@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+
+<section class="property-listing-title">
+    <div class="container">
+        <div class="row align-items-baseline">
+            <div class="col-lg-7">
+                <div class="d-md-flex align-items-baseline property-title">
+                    <div class="property-title">
+                        <h1 class="font-30">{% if listing.title %}{{listing.title|title}}{% endif %}</h1>
+                        <p class="mb-0">{% if listing.address %}{{listing.address}}{% endif %}</p>
+                    </div>
+                    
+                    <div class="property-tag ms-md-auto ms-lg-3">
+                        <ul class="list-inline">
+                            <li class="{% if listing.status == 'Rent' %}bg-blue list-inline-item{% elif listing.status == 'Sale' %}bg-green list-inline-item{% elif listing.status == 'Sold' %}bg-orange list-inline-item{% endif %}">{% if listing.status %}{{listing.status}}{% endif %}</li>
+                            <!-- <li class="bg-green list-inline-item">Featured</li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="d-md-flex align-items-center property-amnt">
+                    <h2 class="font-30">{% if listing.price %}₦{{ listing.price | intcomma }}{% endif %}</h2>
+                    <!-- <ul class="list-inline mt-3 mt-md-0 mb-0 ms-md-auto property-options ">
+                        <li class="list-inline-item">
+                            <a href="#"><i class="fas fa-exchange-alt"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#"><i class="far fa-heart"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#"><i class="fas fa-share-alt"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="javascript:void(0)" onclick="window.print()"><i class="fas fa-print"></i></a>
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'alert.html' %}
+<div class="property-img-gallery">
+    <div class="owl-carousel owl-theme property-img-carousal mt-5">
+        {% if listing.photo_main %}
+        <div class="property-item">
+            <img src="{{ listing.photo_main.url }}" alt="property-img" class="property-img" />
+        </div>
+        {% endif %}
+        {% if listing.photo_1 %}
+        <div class="property-item">
+            <img src="{{ listing.photo_1.url }}" alt="property-img" class="property-img" />
+        </div>
+        {% endif %}
+        {% if listing.photo_2 %}
+        <div class="property-item">
+           <img src="{{ listing.photo_2.url }}" alt="property-img" class="property-img" />
+        </div>
+        {% endif %}
+        {% if listing.photo_3 %}
+        <div class="property-item">
+           <img src="{{ listing.photo_3.url }}" alt="property-img" class="property-img" />
+        </div>
+        {% endif %}
+        {% if listing.photo_4 %}
+        <div class="property-item">
+           <img src="{{ listing.photo_4.url }}" alt="property-img" class="property-img" />
+        </div>
+        {% endif %}
+        {% if listing.photo_5 %}
+        <div class="property-item">
+           <img src="{{ listing.photo_5.url }}" alt="property-img" class="property-img" />
+        </div>
+        {% endif %}
+        {% if listing.photo_6 %}
+        <div class="property-item">
+           <img src="{{ listing.photo_6.url }}" alt="property-img" class="property-img" />
+        </div>
+        {% endif %}
+        
+    </div>
+    <div class="property-slider_nav">
+        <span class="property-prev">
+            <i class="fas fa-chevron-left"></i>
+        </span>
+
+        <span class="property-next ml-3">
+            <i class="fas fa-chevron-right"></i>
+        </span>
+
+    </div>
+</div>
+
+<section class="property-details-section"> 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="property-description mb-5">
+                    <h4 class="border-bottom pb-3 mb-4 font-20">Description</h4>
+
+                    <ul class="list-inline property-desc">
+                        {% if listing.bedrooms %}<li class="list-inline-item">{{ listing.bedrooms }} Bedrooms</li>{% endif %}
+                        {% if listing.lot_size %}<li class="list-inline-item">{{ listing.lot_size }} Lot Size</li>{% endif %}
+                        {% if listing.sqft %}<li class="list-inline-item">{{ listing.sqft }} square Ft</li>{% endif %}
+                    </ul>
+
+                    {% if listing.description %}<p>{{ listing.description }}</p>{% endif %}
+                    
+                </div>
+
+                <div class="property-details mb-5">
+                    <h4 class="border-bottom pb-3 mb-4 font-20">Property Details</h4>
+
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 ">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-6 mb-2">Property :</div>
+                                <div class="col-lg-6 col-md-6 col-6 mb-2 text-alter font-averta-bold">{{ listing.title }}</div>
+
+                                <div class="col-lg-6 col-md-6 col-6 mb-2">Price :</div>
+                                <div class="col-lg-6 col-md-6 col-6 mb-2 text-alter font-averta-bold">$15,000/mo</div>
+
+                                <div class="col-lg-6 col-md-6 col-6 mb-2">Property Size :</div>
+                                <div class="col-lg-6 col-md-6 col-6 mb-2 text-alter font-averta-bold">1060 Sq Ft</div>
+
+                                <div class="col-lg-6 col-md-6 col-6 mb-2">Year Built :</div>
+                                <div class="col-lg-6 col-md-6 col-6 mb-2 text-alter font-averta-bold">2020</div>
+
+                                <div class="col-lg-6 col-md-6 col-6 mb-2">Property Type :</div>
+                                <div class="col-lg-6 col-md-6 col-6 mb-2 text-alter font-averta-bold">{{ listing.property_type }}</div>
+
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+                
+                
+                   
+
+            </div>
+            <div class="col-md-12 col-lg-4">
+
+                <div class="sidebar-agent-form mb-5">
+                    <div class="card">
+                        <div class="agent-profile-image">
+                            <img src="{% static 'assets/images/agents/team-member1.jpg' %}" alt="agent-img">
+                            <h4 class="font-20 mt-3">Johnathan Doe</h4>
+                            <p>Property Agent</p>
+                        </div>
+                        <div class="card-body p-4 border-bottom pb-2">
+                            <div class="agent-contact-detail-sidebar">
+                                <p><i class="fas fa-phone-square-alt me-3 text-orange"></i>9876543210</p>
+                                <p><i class="fas fa-envelope-square me-3 text-orange"></i><a href="#" class="text-decoration-none">johnathandoe@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="agent-contact-form-sidebar">
+                                <form action="{% url 'contact' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="listing_id" value="{{ listing.id }}">
+                                    <input type="hidden" name="listing" value="{{ listing.title }}">
+                                    <input type="text" id="fname" name="name" class="form-control mb-3 font-14" placeholder="Full Name" required="">
+                                    <input type="text" id="pnumber" name="phone" class="form-control mb-3 font-14" placeholder="Phone Number" required="">
+                                    <input type="email" id="emailid" name="email" class="form-control mb-3 font-14" placeholder="Email Address" required="">
+                                    <textarea rows="5" name="message" class="form-control mb-3 font-14" placeholder="I'm interest in..." required=""></textarea>
+                                                                     
+                                    <input type="submit" name="request" class="btn btn-warning w-100 agent-contact-btn" value="Submit Request">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
