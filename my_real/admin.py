@@ -20,4 +20,10 @@ class ContactAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'listing')
     list_per_page = 25
 
-admin.site.register(Contact, ContactAdmin)
+admin.site.site_header = "ROYAL-HAVEN-HOME'S-ADMIN"
+admin.site.site_title = "ROYAL-HAVEN-HOME'S-ADMINISTRATION"
+
+
+admin.site.register(Inquiry, ContactAdmin)
+
+admin.site.register(Contacts)

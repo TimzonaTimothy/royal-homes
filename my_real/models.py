@@ -35,12 +35,25 @@ class Listing(models.Model):
         return self.title
 
 
-class Contact(models.Model):
+class Inquiry(models.Model):
     listing = models.CharField(max_length=200)
     listing_id = models.IntegerField()
     name = models.CharField(max_length=300)
     email = models.EmailField(max_length=300)
     phone = models.IntegerField(blank=True)
+    message = models.TextField(blank=True)
+    contact_date = models.DateTimeField(default=datetime.now, blank=True)
+    
+
+    def __str__(self):
+        return self.name
+    
+
+class Contacts(models.Model):
+    name = models.CharField(max_length=300)
+    email = models.EmailField(max_length=300)
+    phone = models.IntegerField(blank=True)
+    subject = models.CharField(max_length=300, blank=True)
     message = models.TextField(blank=True)
     contact_date = models.DateTimeField(default=datetime.now, blank=True)
     

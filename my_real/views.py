@@ -46,7 +46,7 @@ def contact(request):
         phone = request.POST['phone']
         message = request.POST['message']
         
-        contact = Contact(listing=listing, listing_id=listing_id, name=name, email=email, 
+        contact = Inquiry(listing=listing, listing_id=listing_id, name=name, email=email, 
         phone=phone, message=message, )
         contact.save()
 
@@ -95,3 +95,46 @@ def search(request):
         'values':request.GET,
     }
     return render(request, 'search.html', context)
+
+
+
+def main_contact(request):
+     if request.method == "POST":
+          name = request.POST['name'] 
+          email = request.POST['email']
+          phone = request.POST['phone']
+          subject = request.POST['subject']
+          message = request.POST['message']
+
+          contact = Contacts.objects.create(name=name,phone=phone,email=email,message_subject=subject,message=message)
+          contact.save();
+          messages.success(request, 'Your massage has been submitted ','')
+          return render(request, 'contact.html', {})
+     else:
+          return render(request, 'contact.html', {})
+
+		  
+           
+# def main_contact(request):
+#     if request.method == "POST":
+# 		name = request.POST['name'] 
+# 		email = request.POST['email']
+#         phone = request.POST['phone']
+#         subject = request.POST['subject']
+#         message = request.POST['message']
+            
+# 		contact = Contact.objects.create(name=name,phone=phone,email=email,message_subject=subject,message=message)
+# 		contact.save();
+# 		messages.success(request, 'Your massage has been submitted ','')
+# 		# send_mail(
+# 		# 	massage_firstname + ''+ massage_lastname +' sent you an enquiry '+ massage_email + ' '+ massage_subject,
+# 		# 	massage,
+# 		# 	'arizonatymothy@gmail.com',
+# 		# 	['arizonatymothy@gmail.com',],
+# 		# 	fail_silently=False
+# 		# 	)
+# 		# messages.success(request, 'Your email has been sent ','alert alert-success alert-dismissible')
+# 		return render(request, 'contact.html', {})
+# 	else:
+# 		return render(request, 'contact.html', {})
+    
