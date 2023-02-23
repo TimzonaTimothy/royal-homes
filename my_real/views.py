@@ -106,7 +106,7 @@ def main_contact(request):
           subject = request.POST['subject']
           message = request.POST['message']
 
-          contact = Contacts.objects.create(name=name,phone=phone,email=email,message_subject=subject,message=message)
+          contact = Contacts.objects.create(name=name,phone=phone,email=email,subject=subject,message=message)
           contact.save();
           messages.success(request, 'Your massage has been submitted ','')
           return render(request, 'contact.html', {})

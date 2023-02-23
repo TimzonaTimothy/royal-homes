@@ -9,7 +9,13 @@ class Listing(models.Model):
         ('Sold','Sold'),
     )
 
-    property_type = models.CharField(max_length=255, blank=True, null=True)
+    PRO_STATUS = (
+        ('Apartment','Apartment'),
+        ('House','House'),
+        ('Land','Land'),
+        ('Others','Others'),
+    )
+    property_type = models.CharField(max_length=255,choices=PRO_STATUS, blank=True, null=True)
     title = models.CharField(max_length=200)
     address = models.CharField(max_length=300)
     city = models.CharField(max_length=100,blank=True)
