@@ -139,10 +139,11 @@ MESSAGE_TAGS = {
 
 
 
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'arizonatymothy@gmail.com'
-EMAIL_HOST_PASSWORD = 'ulevuazefgatxuij'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+EMAIL_USE_SSL = False
+EMAIL_HOST = 'mail.royalhavenproperties.com'
+EMAIL_HOST_USER = 'info@royalhavenproperties.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
